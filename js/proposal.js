@@ -1,0 +1,12 @@
+const $=s=>document.querySelector(s);const S=window.SITE;
+$('#nm').textContent=S.name.split(' ')[0];
+const wa=t=>`https://wa.me/${S.whatsapp}?text=${encodeURIComponent(t)}`;
+$('#wa').href=wa("Hi Fynna, I saw your proposal samples and would like a similar plan for my brand.");
+$('#em').href=`mailto:${S.email}?subject=${encodeURIComponent('Social media plan enquiry')}`;
+$('#ft').textContent=S.footerTagline;
+const imgs=[...document.querySelectorAll('.slide')];const lb=$('#lb');let cur=0;
+const show=i=>{cur=(i+imgs.length)%imgs.length;$('#lbi').style.backgroundImage=`url("${imgs[cur].dataset.src}")`;$('#lbc').textContent=`${cur+1} / ${imgs.length}`};
+imgs.forEach((b,i)=>b.onclick=()=>{show(i);lb.classList.add('open')});
+$('.x').onclick=()=>lb.classList.remove('open');$('.p').onclick=()=>show(cur-1);$('.n').onclick=()=>show(cur+1);lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};
+addEventListener('keydown',e=>{if(e.key=='Escape')lb.classList.remove('open');if(!lb.classList.contains('open'))return;if(e.key=='ArrowRight')show(cur+1);if(e.key=='ArrowLeft')show(cur-1)});
+document.addEventListener('contextmenu',e=>{if(e.target.closest('.nodl'))e.preventDefault()});document.addEventListener('dragstart',e=>{if(e.target.closest('.nodl'))e.preventDefault()});

@@ -18,7 +18,7 @@ window.EXPERIENCE = [
   {
     role: "Marketing & Social Media Team Lead",
     company: "The Virtual IT Professional / Interprit",
-    place: "Remote",
+    place: "",
     period: "Jan 2025 – May 2026",
     bullets: [
       "Developed social media strategies and content campaigns for technology consulting, systems integration and IT staffing businesses.",
@@ -30,7 +30,7 @@ window.EXPERIENCE = [
   {
     role: "Email Marketing Specialist",
     company: "AN & Associates",
-    place: "Remote",
+    place: "",
     period: "Oct 2022 – May 2026",
     bullets: [
       "Managed email and SMS marketing campaigns for 30+ Shopify brands.",
@@ -42,7 +42,7 @@ window.EXPERIENCE = [
   {
     role: "Social Media & Marketing Manager | Executive Assistant",
     company: "Romaboots / Quatro Philippines / Various Skincare Brands",
-    place: "Remote",
+    place: "",
     period: "Apr 2019 – Oct 2022",
     bullets: [
       "Managed social media content, scheduling and community engagement.",
