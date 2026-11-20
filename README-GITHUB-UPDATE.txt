@@ -1,18 +1,24 @@
-FYNNA MONTAÑO PORTFOLIO — GITHUB PAGES UPDATE
+GITHUB PAGES UPDATE — FYNNA MONTAÑO PORTFOLIO
 
-This package is structured for the ROOT of an existing GitHub Pages repository.
+This ZIP contains the updated website source supplied by you, including the revised colour palette and website changes.
+
+TO UPDATE YOUR EXISTING GITHUB REPOSITORY:
+1. Extract this ZIP on your computer.
+2. Open GitHub Desktop and select the repository that publishes your portfolio site.
+3. Choose Repository > Show in Explorer.
+4. Open the extracted ZIP folder.
+5. Copy ALL contents inside the extracted folder (not the outer folder).
+6. Paste into the repository root, alongside the existing .git folder.
+7. If asked, merge folders and replace files in the destination.
+8. NEVER paste into or delete the .git folder.
+9. Return to GitHub Desktop. Review changed files.
+10. Commit with message: Update portfolio design and content.
+11. Click Push origin.
+12. Wait for GitHub Pages deployment, then hard-refresh the website with Ctrl+F5.
 
 IMPORTANT:
-1. Extract this ZIP.
-2. Open the LOCAL clone of the repository that publishes portfolio-01.
-3. Copy the CONTENTS of this extracted folder into the repository root.
-4. Merge folders and replace files when Windows asks.
-5. Do NOT copy anything into the .git folder and do NOT delete .git.
-6. Commit the changes in GitHub Desktop, then click Push origin.
-7. Wait for GitHub Pages to deploy, then hard-refresh the site with Ctrl+F5.
-
-The root index.html and the css/, js/, data/, images/, cv/ and proposals/ folders
-must remain together at the repository root. Do not upload the ZIP itself.
-
-This ZIP does not contain .git because GitHub Desktop must keep the repository's
-own Git metadata from your existing portfolio-01 clone.
+- index.html must be directly in the repository root.
+- Keep css/, js/, data/, images/, cv/ and proposals/ folders alongside index.html.
+- Do not upload this ZIP file itself to GitHub.
+- Do not create a nested folder such as website-updated/index.html in the repository.
+- This ZIP intentionally excludes .git so your existing repository connection remains intact.
