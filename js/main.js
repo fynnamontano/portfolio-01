@@ -22,14 +22,15 @@ const card=p=>`<a class="pp rv" href="proposals/${p.id}.html"><div class="im nod
 ['strategy','pillars'].forEach(g=>{$('#pp-'+g).innerHTML=PROPOSALS.filter(p=>p.group==g).map(card).join('')});
 $('#sitegrid').innerHTML=SITES.map(s=>`<a class="site rv" href="${s[2]}" target="_blank" rel="noopener"><div class="chrome"><i></i><i></i><i></i><small>${s[1]}</small></div><div class="pv ${s[5]?'q':''}">${s[5]?'':`<span class="nm">${esc(s[0])}</span>`}<img src="${im(s[4])}" alt="${esc(s[0])} website" loading="lazy" onerror="this.remove()"></div><h3>${esc(s[0])}</h3><p>${esc(s[3])}</p></a>`).join('')+`<div class="land rv"><b>${esc(LANDING.count)}</b><p>${esc(LANDING.text)}</p><small>🔒 ${esc(LANDING.note)}</small></div>`;
 /* lightbox */
-let L=[],cur=0;const lb=$('#lb');const show=i=>{cur=(i+L.length)%L.length;$('#lbi').style.backgroundImage=`url("${L[cur].src}")`;$('#lbi').setAttribute('aria-label',L[cur].cap||'Template preview');$('#lbc').textContent=L[cur].cap};
+let L=[],cur=0;const lb=$('#lb');const show=i=>{cur=(i+L.length)%L.length;const b=$('#lbi'),it=L[cur];lb.classList.toggle('scr',!!it.scroll);if(it.scroll){b.style.backgroundImage='none';b.innerHTML=`<img src="${it.src}" alt="${esc(it.cap||'')}">`;b.scrollTop=0}else{b.innerHTML='';b.style.backgroundImage=`url("${it.src}")`}b.setAttribute('aria-label',it.cap||'Template preview');$('#lbc').textContent=it.cap};
 const openLB=(l,i)=>{L=l;show(i);lb.classList.add('open')};
 $('.x').onclick=()=>lb.classList.remove('open');$('.p').onclick=()=>show(cur-1);$('.n').onclick=()=>show(cur+1);lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};
 /* portfolio */
-let cat='all';$('#cats').innerHTML=[{id:'all',label:'All'},...CATEGORIES].map(c=>`<button class="chip" data-c="${c.id}">${esc(c.label)}</button>`).join('');
-function drawPF(){$$('#cats .chip').forEach(c=>c.classList.toggle('on',c.dataset.c==cat));const l=PORTFOLIO.filter(p=>cat=='all'?!p.tabOnly:p.category==cat);
-$('#pf').innerHTML=l.map((p,i)=>`<button data-i="${i}" aria-label="Enlarge ${esc(p.title)}"><img src="${im('images/work/'+p.image)}" alt="${esc(p.title)}: ${esc(p.text)}" loading="lazy"></button>`).join('');
-$('#pf').onclick=e=>{const b=e.target.closest('button');if(b)openLB(l.map(p=>({src:im('images/work/'+p.image),cap:p.title+'. '+p.text})),+b.dataset.i)}}
+let cat=CATEGORIES[0].id;$('#cats').innerHTML=CATEGORIES.map(c=>`<button class="chip" data-c="${c.id}">${esc(c.label)}</button>`).join('');
+function drawPF(){$$('#cats .chip').forEach(c=>c.classList.toggle('on',c.dataset.c==cat));const cf=CATEGORIES.find(c=>c.id==cat),lay=cf.layout||'masonry',l=PORTFOLIO.filter(p=>p.category==cat);
+$('#pf').className='gal '+lay;
+$('#pf').innerHTML=l.map((p,i)=>`<button data-i="${i}" class="${p.shape=='wide'?'w2':''}" aria-label="Enlarge ${esc(p.title)}"><img src="${im('images/work/'+p.image)}" alt="${esc(p.title)}: ${esc(p.text)}" loading="lazy">${lay=='tall'?'<span class="vh">View full email</span>':''}</button>`).join('');
+$('#pf').onclick=e=>{const b=e.target.closest('button');if(b)openLB(l.map(p=>({src:im('images/work/'+p.image),cap:p.title+'. '+p.text,scroll:lay=='tall'})),+b.dataset.i)}}
 $('#cats').onclick=e=>{const b=e.target.closest('button');if(b){cat=b.dataset.c;drawPF()}};drawPF();
 const GL=Array.from({length:24},(_,i)=>i+1);
 const row=a=>`<div class="row ${a}">${[...GL,...GL].map(s=>`<div class="ph gi${s}"></div>`).join('')}</div>`;
